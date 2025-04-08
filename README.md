@@ -1,2 +1,2 @@
 # Guardiao-da-Mata
-Jogo em C# com base no folclore brasileiro
+Jogo em C# na Unity com base no folclore brasileiro
