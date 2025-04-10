@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour // MACACO/SHOOTING
@@ -18,6 +19,7 @@ public class EnemyShooting : MonoBehaviour // MACACO/SHOOTING
     public Rigidbody2D rig;
     private Animator anim;
     
+    public bool isHit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,27 +36,49 @@ public class EnemyShooting : MonoBehaviour // MACACO/SHOOTING
     {   
         if(player != null)
         {
+            Flip();
             distance = UnityEngine.Vector2.Distance(transform.position, player.transform.position);
         }
 
         if(distance < 6.7)
         {
             timer += Time.deltaTime;
-            if(timer > 2)
+            if(timer > 0.01)
             {
+                isHit = false;
                 timer = 0;
-                anim.Play("Macaco_hit");
-                shoot();
+                anim.SetTrigger("Attack");
             }
         }else
         {
+            Debug.Log("ENTROU NESSE IDLE");
             anim.Play("Macaco_idle");
+
         }
 
     }
 
-    void shoot()
+    void ShootEvent()
     {
         Instantiate(coco, cocoPos.position, Quaternion.identity);
+    }
+
+    void Flip()
+    {
+        if (player == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        // Vira para esquerda se o player estiver à esquerda
+        if (player.transform.position.x < transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x) * -1f;
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+
+        transform.localScale = scale;
     }
 }
