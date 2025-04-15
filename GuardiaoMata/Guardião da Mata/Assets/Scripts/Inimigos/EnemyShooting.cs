@@ -51,9 +51,7 @@ public class EnemyShooting : MonoBehaviour // MACACO/SHOOTING
             }
         }else
         {
-            Debug.Log("ENTROU NESSE IDLE");
             anim.Play("Macaco_idle");
-
         }
 
     }
