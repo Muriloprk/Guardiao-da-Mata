@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spikes : MonoBehaviour
 {
+
+    // Teste de Commit :)
     void OnTriggerEnter2D(Collider2D collision)
     {
         // Verifica se o Collider de verificação tocou o player
