@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TelaLoginCadastro.unity
     guid: 366957a5b67c82844b1fcad69eb1ada9
   - enabled: 1
+    path: Assets/Scenes/TelaJogarSair.unity
+    guid: 4212df3bf5b389d4cadb1502044c786c
+  - enabled: 1
     path: Assets/Scenes/Floresta_pt1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

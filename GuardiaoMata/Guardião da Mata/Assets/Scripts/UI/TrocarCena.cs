@@ -9,4 +9,21 @@ public class TrocarCena : MonoBehaviour
     {
         SceneManager.LoadScene("TelaLoginCadastro");
     }
+
+    // Método para ir para a cena "Floresta_pt1"
+    public void IrParaTelaFloresta1()
+    {
+        SceneManager.LoadScene("Floresta_pt1");
+    }
+
+    // Método para sair do jogo
+    public void Sair()
+    {
+        Application.Quit();
+
+        // Serve para que ao clicar em sair seja vísivel no Editor do Unity
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
 }
