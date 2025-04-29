@@ -20,10 +20,12 @@ public class Dialogue : MonoBehaviour
 
     private DialogueControl dc;
     private bool onRadius;
+    private GameObject player;
 
     void Start()
     {
         dc = FindObjectOfType<DialogueControl>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -31,6 +33,11 @@ public class Dialogue : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z) && onRadius && dc.CurrentState == DialogueEnums.State.Ready)
         {
             dc.StartDialogue(dialogueLines);
+        }
+
+        if(player != null)
+        {
+            Flip();
         }
     }
 
@@ -43,5 +50,24 @@ public class Dialogue : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    void Flip()
+    {
+        if (player == null) return;
+
+        Vector3 scale = transform.localScale;
+
+        // Vira para esquerda se o player estiver à esquerda
+        if (player.transform.position.x < transform.position.x)
+        {
+            scale.x = Mathf.Abs(scale.x) * -1f;
+        }
+        else
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+
+        transform.localScale = scale;
     }
 }

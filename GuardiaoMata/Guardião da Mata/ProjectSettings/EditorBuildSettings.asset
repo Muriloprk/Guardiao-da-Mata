@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Floresta_pt2.unity
     guid: 008e4a4b82654974d87ce61e46809e51
+  - enabled: 1
+    path: Assets/Scenes/Floresta_pt3.unity
+    guid: df1ee591098e400478f320958f9c87a6
   m_configObjects: {}
