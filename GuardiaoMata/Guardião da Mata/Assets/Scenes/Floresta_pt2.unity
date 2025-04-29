@@ -12883,8 +12883,8 @@ MonoBehaviour:
       n\xE3o to entendo nada."
   - speakerIcon: {fileID: 21300000, guid: 9d84e24bc0c73664e9706e14581941e5, type: 3}
     speakerName: Saci Perere
-    text: "\xC9 voc\xEA sabe bem que n\xE3o o comportamento padr\xE3o deles. Tem
-      algo de errado sim, e MUITO errado."
+    text: "\xC9 voc\xEA sabe bem que n\xE3o \xE9 o comportamento padr\xE3o deles.
+      Tem algo de errado sim, e MUITO errado."
   - speakerIcon: {fileID: 21300000, guid: 6852a1324a19b5646ba6b64f0fc95e27, type: 3}
     speakerName: "Poat\xE3n"
     text: "Eu sabia, al\xE9m dos animais t\xF4 sentindo um cheiro de fuma\xE7a."
@@ -12913,10 +12913,10 @@ MonoBehaviour:
   - speakerIcon: {fileID: 21300000, guid: 9d84e24bc0c73664e9706e14581941e5, type: 3}
     speakerName: Saci Perere
     text: "Mas eu to aqui pra te ajudar, vou xeretando por ai e te contando oque
-      est\xE1 acontecendo"
+      est\xE1 acontecendo."
   - speakerIcon: {fileID: 21300000, guid: 9d84e24bc0c73664e9706e14581941e5, type: 3}
     speakerName: Saci Perere
-    text: "Agora corre, se n\xE3o o Curupira vai acabar com tudo\n."
+    text: "Agora corre, se n\xE3o o Curupira vai acabar com tudo."
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
