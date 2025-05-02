@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 52186508}
   - component: {fileID: 52186507}
   - component: {fileID: 52186511}
+  - component: {fileID: 52186512}
   m_Layer: 0
   m_Name: Curupira
   m_TagString: Untagged
@@ -430,7 +431,8 @@ Transform:
   m_LocalPosition: {x: 6.404, y: -2.404, z: 0}
   m_LocalScale: {x: 4.7212, y: 4.7212, z: 4.7212}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 559366827}
   m_Father: {fileID: 1870445481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &52186507
@@ -469,7 +471,7 @@ Rigidbody2D:
   m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -480,7 +482,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &52186510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -584,6 +586,37 @@ PolygonCollider2D:
       - {x: -0.180283, y: -0.0010745153}
       - {x: -0.18028304, y: -0.2385434}
   m_UseDelaunayMesh: 0
+--- !u!114 &52186512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52186505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05136c7417857b4cb936f298d5b21b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  walkSpeed: 2
+  runSpeed: 4
+  wallCheckDistance: 0.1
+  rb: {fileID: 52186508}
+  col: {fileID: 52186511}
+  anim: {fileID: 52186507}
+  wallCheck: {fileID: 559366827}
+  phase2Threshold: 5
+  fireTrailPrefab: {fileID: 1613833764013373031, guid: 56e994f363111a848a319462a64de4a4, type: 3}
+  fireSpawnInterval: 0.13
+  walkAnim: curupira_walk
+  runFireAnim: curupira_runFire
+  hitAnim: curupira_hit
+  deathAnim: curupira_die
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  behaviorScript: {fileID: 0}
 --- !u!1 &53477796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,6 +1318,37 @@ MonoBehaviour:
   minX: 0
   maxX: 0
   timeLerp: 0.12
+--- !u!1 &559366826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559366827}
+  m_Layer: 0
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &559366827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559366826}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.17, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 52186506}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641171471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1612,7 +1676,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Floresta_pt2
+          m_StringArgument: Boss_level
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &917982978
