@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Floresta_pt3.unity
     guid: df1ee591098e400478f320958f9c87a6
+  - enabled: 1
+    path: Assets/Scenes/Floresta_pt4.unity
+    guid: 5ff9f3d16172dce44921b6fd5060422c
+  - enabled: 1
+    path: Assets/Scenes/Floresta_pt5.unity
+    guid: be88b19ac641f2848ae27bec07fd7d5a
+  - enabled: 1
+    path: Assets/Scenes/Boss_level.unity
+    guid: 56d71e166955a814a9704d7f1bfb2412
   m_configObjects: {}
