@@ -20533,6 +20533,10 @@ PrefabInstance:
       propertyPath: lvlName
       value: Floresta_pt5
       objectReference: {fileID: 0}
+    - target: {fileID: 7866929753398367887, guid: 34011d90c59d11d4c89f03168ac840ae, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8164755457114950398, guid: 34011d90c59d11d4c89f03168ac840ae, type: 3}
       propertyPath: m_Name
       value: NextLevel

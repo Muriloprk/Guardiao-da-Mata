@@ -942,6 +942,10 @@ PrefabInstance:
       propertyPath: lvlName
       value: Boss_level
       objectReference: {fileID: 0}
+    - target: {fileID: 7866929753398367887, guid: 34011d90c59d11d4c89f03168ac840ae, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8164755457114950398, guid: 34011d90c59d11d4c89f03168ac840ae, type: 3}
       propertyPath: m_Name
       value: NextLevel
@@ -1378,7 +1382,7 @@ Transform:
   m_GameObject: {fileID: 497702155}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.63, y: -2.821, z: 0}
+  m_LocalPosition: {x: -8.08, y: -2.82, z: 0}
   m_LocalScale: {x: 1.0619, y: 1.0619, z: 1.0619}
   m_ConstrainProportionsScale: 0
   m_Children:
