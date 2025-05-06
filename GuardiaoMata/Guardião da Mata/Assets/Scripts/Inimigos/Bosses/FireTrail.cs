@@ -7,6 +7,7 @@ public class FireTrail : MonoBehaviour
 {
 
     public float lifetime;
+    public AudioSource audioDano;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class FireTrail : MonoBehaviour
             if (player != null)
             {
                 player.GetComponent<LifeSystem>().vida--;
+                audioDano.Play();
 
                 // Direção do knockback
                 Vector2 knockDir = (player.transform.position.x < transform.position.x) ? new Vector2(-1, 0.6f) : new Vector2(1, 0.6f);

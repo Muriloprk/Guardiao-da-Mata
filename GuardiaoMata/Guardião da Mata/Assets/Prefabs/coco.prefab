@@ -195,3 +195,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 5
   timer: 0
+  audioDano: {fileID: 4170212619127407214, guid: ad339c7360ba9f549af7c244e0e0cded, type: 3}

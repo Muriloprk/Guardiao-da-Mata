@@ -27,6 +27,9 @@ public class DialogueControl : MonoBehaviour
     public DialogueEnums.State CurrentState => state;
 
     public bool isDialogueActive = false;
+
+    public AudioSource audioDialogo;
+    private int x;
     
 
     public void StartDialogue(Dialogue.DialogueLine[] lines)
@@ -92,6 +95,17 @@ public class DialogueControl : MonoBehaviour
         foreach (char letter in text.ToCharArray())
         {
             dialogueText.text += letter;
+            if(letter != ' ')
+            {
+                x++; 
+            }
+
+            if ((x == 2))
+            {
+                audioDialogo.Play();
+                x = 0;
+            }
+
             yield return new WaitForSeconds(typingSpeed);
         }
 

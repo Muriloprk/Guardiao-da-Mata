@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
 
     public bool attackingBool;
 
+    public AudioSource audioAtaque;
+
     [SerializeField] public BoxCollider2D attack;
 
 
@@ -102,6 +104,7 @@ public class Player : MonoBehaviour
         if((Input.GetButtonDown("Fire3") && !anim.GetBool("isHit")) || (Input.GetKeyDown("x") && !anim.GetBool("isHit"))){
 
             attackingBool = true;
+            audioAtaque.Play();
 
             if(isGrounded)
             {

@@ -18,6 +18,8 @@ public class EnemyDamageHandler : MonoBehaviour
 
     private bool isDead = false;
 
+    public AudioSource audioDano;
+
 
     void Start()
     {
@@ -76,6 +78,7 @@ public class EnemyDamageHandler : MonoBehaviour
             if (player != null)
             {
                 player.GetComponent<LifeSystem>().vida--;
+                audioDano.Play();
 
                 // Direção do knockback
                 Vector2 knockDir = (player.transform.position.x < transform.position.x) ? new Vector2(-1, 0.6f) : new Vector2(1, 0.6f);

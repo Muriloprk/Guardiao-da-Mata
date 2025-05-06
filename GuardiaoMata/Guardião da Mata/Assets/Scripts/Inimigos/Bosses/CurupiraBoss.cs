@@ -22,7 +22,7 @@ public class CurupiraBoss : MonoBehaviour
     public Transform wallCheck;
 
     [Header("Fase 2 - Fogo")]
-    public float phase2Threshold = 50f; // 50 de vida
+    public float phase2Threshold = 50f; // 50% de vida
     public GameObject fireTrailPrefab;
     public float fireSpawnInterval = 0.1f;
     private float nextFireTime;
@@ -34,8 +34,10 @@ public class CurupiraBoss : MonoBehaviour
     public string hitAnim = "Curupira_Hit";
     public string deathAnim = "Curupira_Death";
 
+
     public LayerMask groundLayer;
     public MonoBehaviour behaviorScript;
+    public AudioSource audioDano;
 
     void Start()
     {
@@ -158,6 +160,7 @@ public class CurupiraBoss : MonoBehaviour
             if (player != null)
             {
                 player.GetComponent<LifeSystem>().vida--;
+                audioDano.Play();
 
                 // Direção do knockback
                 Vector2 knockDir = (player.transform.position.x < transform.position.x) ? new Vector2(-1, 0.6f) : new Vector2(1, 0.6f);
