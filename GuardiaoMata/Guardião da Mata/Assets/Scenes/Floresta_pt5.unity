@@ -940,7 +940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7083771853480454728, guid: 34011d90c59d11d4c89f03168ac840ae, type: 3}
       propertyPath: lvlName
-      value: Boss_level
+      value: Floresta_pt6
       objectReference: {fileID: 0}
     - target: {fileID: 7866929753398367887, guid: 34011d90c59d11d4c89f03168ac840ae, type: 3}
       propertyPath: m_IsTrigger
@@ -2011,6 +2011,7 @@ MonoBehaviour:
   dialogueObj: {fileID: 1304278463}
   typingSpeed: 0.05
   isDialogueActive: 0
+  audioDialogo: {fileID: 0}
 --- !u!1001 &752133064
 PrefabInstance:
   m_ObjectHideFlags: 0
