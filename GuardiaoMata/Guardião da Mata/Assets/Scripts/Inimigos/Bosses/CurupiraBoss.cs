@@ -38,6 +38,8 @@ public class CurupiraBoss : MonoBehaviour
     public LayerMask groundLayer;
     public MonoBehaviour behaviorScript;
     public AudioSource audioDano;
+    public AudioSource audioMorte;
+    public AudioSource audioFase2;
 
     void Start()
     {
@@ -68,6 +70,7 @@ public class CurupiraBoss : MonoBehaviour
     {
         isInPhase2 = true;
         currentSpeed = runSpeed;
+        audioFase2.Play();
         anim.Play(runFireAnim);
     }
 
@@ -138,6 +141,7 @@ public class CurupiraBoss : MonoBehaviour
         if (behaviorScript != null) behaviorScript.enabled = false;
 
         anim.Play(deathAnim);
+        audioMorte.Play();
         Destroy(gameObject, 0.5f);
     }
 

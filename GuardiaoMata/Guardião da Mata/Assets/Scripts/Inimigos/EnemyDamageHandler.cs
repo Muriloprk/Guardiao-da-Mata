@@ -19,6 +19,8 @@ public class EnemyDamageHandler : MonoBehaviour
     private bool isDead = false;
 
     public AudioSource audioDano;
+    public AudioSource audioMorte;
+
 
 
     void Start()
@@ -54,6 +56,7 @@ public class EnemyDamageHandler : MonoBehaviour
         if (behaviorScript != null) behaviorScript.enabled = false;
 
         anim.Play(deathAnim);
+        audioMorte.Play();
         Invoke("DestroyEnemy", 0.5f);
     }
 
