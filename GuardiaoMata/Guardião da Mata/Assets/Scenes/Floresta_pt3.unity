@@ -3601,7 +3601,7 @@ MonoBehaviour:
   dialogueObj: {fileID: 1940745858}
   typingSpeed: 0.05
   isDialogueActive: 0
-  audioDialogo: {fileID: 0}
+  audioDialogo: {fileID: 1110413507}
 --- !u!4 &1110413506
 Transform:
   m_ObjectHideFlags: 0
