@@ -24,6 +24,7 @@ public class CurupiraBoss : MonoBehaviour
     [Header("Fase 2 - Fogo")]
     public float phase2Threshold = 50f; // 50% de vida
     public GameObject fireTrailPrefab;
+    public GameObject SaciPrefab;
     public float fireSpawnInterval = 0.1f;
     private float nextFireTime;
     private bool isInPhase2 = false;
@@ -142,6 +143,9 @@ public class CurupiraBoss : MonoBehaviour
 
         anim.Play(deathAnim);
         audioMorte.Play();
+
+        Vector3 saciPosition = new Vector3(6.404f, -2.86f, 0);
+        Instantiate(SaciPrefab, saciPosition, Quaternion.identity);
         Destroy(gameObject, 0.5f);
     }
 
