@@ -18,19 +18,17 @@ public class FirebaseAuthManager : MonoBehaviour
     {
         mensagemErro.gameObject.SetActive(false);
 
-        // Verifica e corrige as dependências do Firebase e inicializa o app manualmente
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Result == Firebase.DependencyStatus.Available)
             {
-                // Cria o app com as opções manuais
                 FirebaseApp app = FirebaseApp.Create(new AppOptions
                 {
                     ApiKey = "AIzaSyCBVVPAxnSsAh2UoIycdtRe0KI169BPTYk",
                     ProjectId = "guardiaodamata-acdf6",
                     AppId = "314681092117"
                 });
-                
+
                 auth = FirebaseAuth.GetAuth(app);
                 Debug.Log("✅ Firebase inicializado manualmente para desktop!");
             }
@@ -41,12 +39,18 @@ public class FirebaseAuthManager : MonoBehaviour
         });
     }
 
-    // Método chamado para cadastrar um novo usuário
     public void Cadastrar()
     {
-        Debug.Log("Cadastrar chamado!");
-        string email = emailInput.text;
-        string senha = senhaInput.text;
+        mensagemErro.gameObject.SetActive(false);
+        string email = emailInput.text.Trim();
+        string senha = senhaInput.text.Trim();
+
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+        {
+            mensagemErro.text = "Preencha todos os campos.";
+            mensagemErro.gameObject.SetActive(true);
+            return;
+        }
 
         auth.CreateUserWithEmailAndPasswordAsync(email, senha).ContinueWithOnMainThread(task =>
         {
@@ -56,17 +60,42 @@ public class FirebaseAuthManager : MonoBehaviour
             }
             else
             {
-                mensagemErro.text = "Erro ao cadastrar: " + (task.Exception?.GetBaseException().Message ?? "Erro desconhecido");
+                FirebaseException fbEx = task.Exception?.GetBaseException() as FirebaseException;
+                AuthError errorCode = (AuthError)(fbEx != null ? fbEx.ErrorCode : -1);
+
+                switch (errorCode)
+                {
+                    case AuthError.EmailAlreadyInUse:
+                        mensagemErro.text = "Este e-mail já está cadastrado.";
+                        break;
+                    case AuthError.InvalidEmail:
+                        mensagemErro.text = "E-mail inválido.";
+                        break;
+                    case AuthError.WeakPassword:
+                        mensagemErro.text = "Senha fraca. Use 6 caracteres ou mais.";
+                        break;
+                    default:
+                        mensagemErro.text = $"Erro ao cadastrar: {(fbEx != null ? fbEx.Message : "Tente novamente.")}";
+                        break;
+                }
+
                 mensagemErro.gameObject.SetActive(true);
             }
         });
     }
 
-    // Método chamado para realizar o login de um usuário
     public void Login()
     {
-        string email = emailInput.text;
-        string senha = senhaInput.text;
+        mensagemErro.gameObject.SetActive(false);
+        string email = emailInput.text.Trim();
+        string senha = senhaInput.text.Trim();
+
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+        {
+            mensagemErro.text = "Preencha todos os campos.";
+            mensagemErro.gameObject.SetActive(true);
+            return;
+        }
 
         auth.SignInWithEmailAndPasswordAsync(email, senha).ContinueWithOnMainThread(task =>
         {
@@ -76,7 +105,23 @@ public class FirebaseAuthManager : MonoBehaviour
             }
             else
             {
-                mensagemErro.text = "Erro ao logar: " + (task.Exception?.GetBaseException().Message ?? "Erro desconhecido");
+                FirebaseException fbEx = task.Exception?.GetBaseException() as FirebaseException;
+                AuthError errorCode = (AuthError)(fbEx != null ? fbEx.ErrorCode : -1);
+
+                switch (errorCode)
+                {
+                    case AuthError.InvalidEmail:
+                        mensagemErro.text = "E-mail inválido.";
+                        break;
+                    case AuthError.UserNotFound:
+                    case AuthError.WrongPassword:
+                        mensagemErro.text = "E-mail ou senha incorretos.";
+                        break;
+                    default:
+                        mensagemErro.text = "Erro ao fazer login. Tente novamente.";
+                        break;
+                }
+
                 mensagemErro.gameObject.SetActive(true);
             }
         });
