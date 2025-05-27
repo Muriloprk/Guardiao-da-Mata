@@ -190,7 +190,7 @@ MonoBehaviour:
     text: "\xD3timo... Ent\xE3o \xE9 pra l\xE1 que eu vou."
   - speakerIcon: {fileID: 21300000, guid: 9d84e24bc0c73664e9706e14581941e5, type: 3}
     speakerName: Saci Perere
-    text: "S\xF3 vai com calma, guerreiro, fiquei sabendo que tem armadilha at\xE9
+    text: "S\xF3 vai com calma guerreiro, fiquei sabendo que tem armadilha at\xE9
       em sombra, e dizem que at\xE9 o vento l\xE1 sopra ao contr\xE1rio!"
   - speakerIcon: {fileID: 21300000, guid: 6852a1324a19b5646ba6b64f0fc95e27, type: 3}
     speakerName: "Poat\xE3n"
