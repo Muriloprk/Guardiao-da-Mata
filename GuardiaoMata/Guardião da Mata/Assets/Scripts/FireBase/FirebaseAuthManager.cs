@@ -11,6 +11,7 @@ public class FirebaseAuthManager : MonoBehaviour
 {
     public TMP_InputField emailInput;
     public TMP_InputField senhaInput;
+    public TMP_InputField nomeInput;
     public TMP_Text mensagemErro;
     private FirebaseAuth auth;
 
@@ -44,8 +45,9 @@ public class FirebaseAuthManager : MonoBehaviour
         mensagemErro.gameObject.SetActive(false);
         string email = emailInput.text.Trim();
         string senha = senhaInput.text.Trim();
+        string nome = nomeInput.text.Trim();  // Obtém o nome/apelido
 
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha) || string.IsNullOrEmpty(nome))
         {
             mensagemErro.text = "Preencha todos os campos.";
             mensagemErro.gameObject.SetActive(true);
@@ -56,7 +58,24 @@ public class FirebaseAuthManager : MonoBehaviour
         {
             if (task.IsCompleted && !task.IsFaulted)
             {
-                SceneManager.LoadScene("TelaJogarSair");
+                FirebaseUser newUser = task.Result.User;  // Obtém o usuário criado
+
+                // Atualiza o perfil com o Nome/Apelido
+                UserProfile profile = new UserProfile { DisplayName = nome };
+
+                newUser.UpdateUserProfileAsync(profile).ContinueWithOnMainThread(profileTask =>
+                {
+                    if (profileTask.IsCompleted && !profileTask.IsFaulted)
+                    {
+                        // Sucesso, vai para a próxima cena
+                        SceneManager.LoadScene("TelaJogarSair");
+                    }
+                    else
+                    {
+                        mensagemErro.text = "Erro ao salvar nome/apelido.";
+                        mensagemErro.gameObject.SetActive(true);
+                    }
+                });
             }
             else
             {
@@ -84,6 +103,7 @@ public class FirebaseAuthManager : MonoBehaviour
         });
     }
 
+
     public void Login()
     {
         mensagemErro.gameObject.SetActive(false);
@@ -99,7 +119,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
         auth.SignInWithEmailAndPasswordAsync(email, senha).ContinueWithOnMainThread(task =>
         {
-            if (task.IsCompleted && !task.IsFaulted)
+            if (task.IsCompletedSuccessfully)
             {
                 SceneManager.LoadScene("TelaJogarSair");
             }
@@ -118,7 +138,7 @@ public class FirebaseAuthManager : MonoBehaviour
                         mensagemErro.text = "E-mail ou senha incorretos.";
                         break;
                     default:
-                        mensagemErro.text = "Erro ao fazer login. Tente novamente.";
+                        mensagemErro.text = "Erro: " + (fbEx?.Message ?? "Erro desconhecido.");
                         break;
                 }
 
@@ -126,4 +146,5 @@ public class FirebaseAuthManager : MonoBehaviour
             }
         });
     }
+
 }
