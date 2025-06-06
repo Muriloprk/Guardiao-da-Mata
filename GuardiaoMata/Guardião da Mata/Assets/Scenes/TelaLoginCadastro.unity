@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emailInput: {fileID: 402590241}
   senhaInput: {fileID: 854248019}
+  nomeInput: {fileID: 2044577358}
   mensagemErro: {fileID: 1138077137}
 --- !u!4 &307675065
 Transform:

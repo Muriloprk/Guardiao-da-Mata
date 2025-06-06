@@ -109,10 +109,22 @@ public class FirebaseAuthManager : MonoBehaviour
         mensagemErro.gameObject.SetActive(false);
         string email = emailInput.text.Trim();
         string senha = senhaInput.text.Trim();
+        string nome = nomeInput.text.Trim();
 
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha))
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(senha) || string.IsNullOrEmpty(nome))
         {
-            mensagemErro.text = "Preencha todos os campos.";
+            if (string.IsNullOrEmpty(email))
+            {
+                mensagemErro.text = "Preencha o campo de E-mail.";
+            }
+            else if (string.IsNullOrEmpty(senha))
+            {
+                mensagemErro.text = "Preencha o campo de Senha.";
+            }
+            else if (string.IsNullOrEmpty(nome))
+            {
+                mensagemErro.text = "Preencha o campo de Nome/Apelido.";
+            }
             mensagemErro.gameObject.SetActive(true);
             return;
         }
